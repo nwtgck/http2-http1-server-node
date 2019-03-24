@@ -1,0 +1,17 @@
+{
+  "name": "http2-http1-server-example-simple",
+  "version": "1.0.0",
+  "description": "Example of HTTP2-HTTP1 server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
+  },
+  "author": "Ryo Ota <nwtgck@gmail.com> (https://github.com/nwtgck)",
+  "license": "MIT",
+  "dependencies": {
+    "http2-http1-server": "file:../.."
+  },
+  "devDependencies": {
+    "ts-node": "^8.0.3"
+  }
+}

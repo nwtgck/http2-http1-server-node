@@ -2,8 +2,8 @@
   "name": "http2-http1-server",
   "version": "0.1.0-SNAPSHOT",
   "description": "HTTP/2-interface HTTP1 server for compatibility",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "dist/lib/http2-http1-server.js",
+  "types": "dist/lib/http2-http1-server.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublish": "npm run build",
