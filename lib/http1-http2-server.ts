@@ -1,7 +1,3 @@
-export function hoge(str: string): number {
-  return str.length;
-}
-
 // TODO: Find a way to only use "import"
 import * as http2 from "http2";
 const http = require("http");
