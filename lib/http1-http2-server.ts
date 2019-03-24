@@ -2,15 +2,12 @@ export function hoge(str: string): number {
   return str.length;
 }
 
-// TODO: Use import instead of require
-
-const http2 = require("http2");
+// TODO: Find a way to only use "import"
+import * as http2 from "http2";
 const http = require("http");
-
-const net = require("net");
-
+import * as net from "net";
 const { kIncomingMessage } = require('_http_common');
-const { kServerResponse } = require('_http_server');
+const { kServerResponse }  = require('_http_server');
 
 
 // (from:  https://github.com/nodejs/node/blob/296712602b4cba785ccda72623c0cbe3b4584abb/lib/internal/http2/core.js#L2610
@@ -19,6 +16,48 @@ const kOptions = Symbol('options');
 const kDefaultSocketTimeout = 2 * 60 * 1000;
 
 const { _connectionListener: httpConnectionListener } = http;
+
+
+export class Http2Http1Server extends net.Server {
+  constructor(options: http2.ServerOptions, requestListener: (request: http2.Http2ServerRequest, response: http2.Http2ServerResponse) => void) {
+    super(connectionListener);
+    // NOTE: any is used
+    (this as any)[kOptions] = initializeOptions(options);
+    // NOTE: any is used
+    (this as any).timeout = kDefaultSocketTimeout;
+    this.on('newListener', setupCompat);
+    if (typeof requestListener === 'function')
+      this.on('request', requestListener);
+  }
+
+  setTimeout(msecs: number, callback?: () => void) {
+    // NOTE: any is used
+    (this as any).timeout = msecs;
+    if (callback !== undefined) {
+      if (typeof callback !== 'function')
+      // TODO: Use it
+      // throw new ERR_INVALID_CALLBACK();
+        throw new Error("Invalid Callback (Should use new ERR_INVALID_CALLBACK() but it's internal)");
+      this.on('timeout', callback);
+    }
+    return this;
+  }
+}
+
+export function createServer(options?: http2.ServerOptions, handler?: (request: http2.Http2ServerRequest, response: http2.Http2ServerResponse) => void) {
+  if (typeof handler === 'undefined') {
+    handler = (req, res) => {}
+  }
+  if (typeof options === 'function') {
+    handler = options;
+    options = {};
+  }
+  if (typeof options === 'undefined') {
+    options = {}
+  }
+  // assertIsObject(options, 'options');
+  return new Http2Http1Server(options, handler);
+}
 
 
 // TODO: Not use any
@@ -103,37 +142,3 @@ function connectionListener(socket: any) {
   return httpConnectionListener.call(this, socket);
 }
 
-export class Http2Http1Server extends net.Server {
-  // TODO: Not use any
-  constructor(options: any, requestListener: any) {
-    super(connectionListener);
-    (this as any)[kOptions] = initializeOptions(options);
-    this.timeout = kDefaultSocketTimeout;
-    this.on('newListener', setupCompat);
-    if (typeof requestListener === 'function')
-      this.on('request', requestListener);
-  }
-
-  // TODO: Not use any
-  setTimeout(msecs: any, callback: any) {
-    this.timeout = msecs;
-    if (callback !== undefined) {
-      if (typeof callback !== 'function')
-        // TODO: Use it
-        // throw new ERR_INVALID_CALLBACK();
-        throw new Error("Invalid Callback (Should use new ERR_INVALID_CALLBACK() but it's internal)");
-      this.on('timeout', callback);
-    }
-    return this;
-  }
-}
-
-// TODO: Not use any
-export function createServer(options: any, handler: any) {
-  if (typeof options === 'function') {
-    handler = options;
-    options = {};
-  }
-  // assertIsObject(options, 'options');
-  return new Http2Http1Server(options, handler);
-}
