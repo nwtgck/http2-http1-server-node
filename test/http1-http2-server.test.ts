@@ -1,7 +1,7 @@
-import * as http from "http";
 import * as http2 from "http2";
 import thenRequest from "then-request";
 import * as assert from 'power-assert';
+import * as getPort from "get-port";
 
 import {createServer}  from '../lib/http1-http2-server';
 
@@ -13,8 +13,7 @@ export function sleep(ms: number): Promise<any> {
 
 describe('createServer', () => {
   it("should allow HTTP/1 client to connect", async ()=>{
-    // TODO: Find unused port
-    const port = 8855;
+    const port: number = await getPort();
 
     const server = createServer({}, (req: http2.Http2ServerRequest, res: http2.Http2ServerResponse)=>{
       res.end("hello from server!\n");
