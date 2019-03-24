@@ -3,7 +3,7 @@ import thenRequest from "then-request";
 import * as assert from 'power-assert';
 import * as getPort from "get-port";
 
-import {createServer}  from '../lib/http1-http2-server';
+import {createServer}  from '../lib/http2-http1-server';
 
 // Sleep
 // (from: https://qiita.com/yuba/items/2b17f9ac188e5138319c)

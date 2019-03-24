@@ -1,5 +1,5 @@
 {
-  "name": "http1-http2-server",
+  "name": "http2-http1-server",
   "version": "0.1.0-SNAPSHOT",
   "description": "HTTP/2-interface HTTP1 server for compatibility",
   "main": "dist/lib/index.js",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nwtgck/http1-http2-server"
+    "url": "https://github.com/nwtgck/http2-http1-server"
   },
   "author": "Ryo Ota",
   "license": "MIT",
