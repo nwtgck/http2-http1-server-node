@@ -21,6 +21,12 @@ export function createServer(options: ServerOptions, onRequestHandler?: (request
 So, Node.js developers in TypeScript should **implement two different types of handlers** to support both HTTP/1 and HTTP/2 over non-TLS.
 To solve the annoying issue, this project provides HTTP/1 server whose interface is the same as `http2.createServer()`. This project allows you to implement only one handler(= `(request: Http2ServerRequest, response: Http2ServerResponse) => void`).
 
+## Installation
+
+```bash
+npm install -S git+https://github.com/nwtgck/http2-http1-server-node
+```
+
 ## Usage
 
 Here is an example to use.
@@ -47,3 +53,5 @@ secureServer.listen(8443);
 
 * `server` supports only HTTP/1.
 * `secureServer` supports both HTTP/1 and HTTP/2 because it uses [ALPN](https://nodejs.org/api/http2.html#http2_alpn_negotiation).
+
+You can find whole example in [examples/simple](examples/simple).
