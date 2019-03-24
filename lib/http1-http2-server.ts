@@ -135,7 +135,6 @@ function initializeOptions(options: any) {
 
 // TODO: Not use any
 function connectionListener(socket: any) {
-  console.log("connectionListener called");
   const options = this[kOptions] || {};
   socket.server[kIncomingMessage] = options.Http1IncomingMessage;
   socket.server[kServerResponse] = options.Http1ServerResponse;
