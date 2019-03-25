@@ -1,4 +1,5 @@
 # http2-http1-server
+[![CircleCI](https://circleci.com/gh/nwtgck/http2-http1-server-node.svg?style=shield)](https://circleci.com/gh/nwtgck/http2-http1-server-node)
 
 HTTP/2-interface HTTP1 server for compatibility for Node.js/TypeScript
 
