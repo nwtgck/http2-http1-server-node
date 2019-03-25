@@ -1,7 +1,7 @@
 import * as http2 from "http2";
 import thenRequest from "then-request";
 import * as assert from 'power-assert';
-import * as getPort from "get-port";
+import getPort from "get-port";
 
 import {createServer}  from '../lib/http2-http1-server';
 
