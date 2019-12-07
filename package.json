@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/mocha": "^5.2.7",
     "@types/node": "^11.11.6",
-    "@types/power-assert": "^1.5.0",
+    "@types/power-assert": "^1.5.1",
     "espower-typescript": "^9.0.0",
     "get-port": "^5.0.0",
     "mocha": "^6.2.1",
