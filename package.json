@@ -22,7 +22,7 @@
   "author": "Ryo Ota",
   "license": "MIT",
   "devDependencies": {
-    "@types/mocha": "^5.2.7",
+    "@types/mocha": "^8.0.3",
     "@types/node": "^12.12.36",
     "@types/power-assert": "^1.5.0",
     "espower-typescript": "^9.0.0",
